@@ -1,0 +1,8 @@
+# Ignored files and folders
+bin/
+obj/
+.vscode/
+*.suo
+*.user
+*.vs
+*.bak
