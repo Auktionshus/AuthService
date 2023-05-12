@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AuthService.Controllers;
 
@@ -9,22 +9,26 @@ namespace AuthService.Controllers;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
+    private readonly ILogger<AuthController> _logger;
+    private readonly string _hostName; 
+    private readonly string _secret; 
+    private readonly string _issuer;
     public AuthController(ILogger<AuthController> logger, IConfiguration config)
     {
-        _config = config;
+        _hostName = config["HostnameRabbit"];
+        _secret = config["Seceret"];
+        _issuer = config ["Issuer"]; 
+        
         _logger = logger;
+        _logger.LogInformation($"Connection: {_hostName}");
     }
 
-    public AuthController(ILogger<Controller> logger)
-    {
-        _logger = logger;
-    }
 
     private string GenerateJwtToken(string username)
     {
         var securityKey =
         new
-        SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Secret"]));
+        SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
         var credentials =
         new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
         var claims = new[]
