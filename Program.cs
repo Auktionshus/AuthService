@@ -5,14 +5,17 @@ using System.IdentityModel.Tokens.Jwt;
 using NLog;
 using NLog.Web;
 
-var secret = Environment.GetEnvironmentVariable("Secret");
-var issuer = Environment.GetEnvironmentVariable("Issuer");
+
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
 {
+
+    var secret = Environment.GetEnvironmentVariable("Secret");
+    var issuer = Environment.GetEnvironmentVariable("Issuer");
+    
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services
