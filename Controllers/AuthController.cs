@@ -92,4 +92,11 @@ public class AuthController : ControllerBase
             return StatusCode(404);
         }
     }
+
+    [Authorize]
+    [HttpGet]
+         public async Task<IActionResult> Get()
+            {
+                return Ok("You're authorized");
+            }
 }
