@@ -26,7 +26,6 @@ namespace AuthService.Controllers
         private readonly string _secret;
         private readonly string _issuer;
         private readonly string _mongoDbConnectionString;
-        private readonly HttpClient _httpClient;
 
         public AuthController(ILogger<AuthController> logger, IConfiguration config)
         {
