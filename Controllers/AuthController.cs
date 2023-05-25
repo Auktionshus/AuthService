@@ -67,11 +67,11 @@ namespace AuthService.Controllers
 
             if (user == null)
             {
-                return BadRequest(new { message = "Email or password is incorrect" });
+                return BadRequest(new { message = "Email is incorrect" });
             }
             else if (!VerifyPasswordHash(model.Password, user.PasswordHash, user.PasswordSalt))
             {
-                return BadRequest(new { message = "Email or password is incorrect" });
+                return BadRequest(new { message = "Password is incorrect" });
             }
 
             var loginModel = new { Username = model.Email, Password = model.Password };
