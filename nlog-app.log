@@ -93,3 +93,29 @@
 2023-05-25 11:45:10.5760 Info Logger has been closed down.
 2023-05-25 11:45:10.5760 Info AppDomain Shutting down. LogFactory closing...
 2023-05-25 11:45:10.5760 Info LogFactory has been closed.
+2023-05-25 13:42:31.4987 Info Message Template Auto Format enabled
+2023-05-25 13:42:31.5174 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 13:42:31.5174 Info Loading assembly: NLog.Loki
+2023-05-25 13:42:31.5174 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-25 13:42:31.5785 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 13:42:31.5805 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 13:42:31.6594 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 13:42:31.6808 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\Users\mathi\Skol\Skole\It-infrastruktur-og-arkitektur\auktion\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-25 13:42:35.8664 Info Shutdown() called. Logger closing...
+2023-05-25 13:42:35.8664 Info Closing old configuration.
+2023-05-25 13:42:35.8838 Info Logger has been closed down.
+2023-05-25 13:42:35.8838 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 13:42:35.8838 Info LogFactory has been closed.
+2023-05-25 13:42:43.2839 Info Message Template Auto Format enabled
+2023-05-25 13:42:43.3019 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 13:42:43.3019 Info Loading assembly: NLog.Loki
+2023-05-25 13:42:43.3171 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-25 13:42:43.3522 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 13:42:43.3522 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 13:42:43.4350 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 13:42:43.4557 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\Users\mathi\Skol\Skole\It-infrastruktur-og-arkitektur\auktion\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-25 13:51:38.6920 Info Shutdown() called. Logger closing...
+2023-05-25 13:51:38.7115 Info Closing old configuration.
+2023-05-25 13:51:38.7833 Info Logger has been closed down.
+2023-05-25 13:51:38.7972 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 13:51:38.7972 Info LogFactory has been closed.
