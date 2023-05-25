@@ -59,7 +59,7 @@ namespace AuthService.Controllers
         public async Task<IActionResult> Login([FromBody] RegisterModel model)
         {
             MongoClient dbClient = new MongoClient(_mongoDbConnectionString);
-            var collection = dbClient.GetDatabase("user").GetCollection<User>("users");
+            var collection = dbClient.GetDatabase("User").GetCollection<User>("Users");
 
             User user = await collection
                 .Find<User>(u => u.Email == model.Email)
