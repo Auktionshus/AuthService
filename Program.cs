@@ -5,17 +5,14 @@ using System.IdentityModel.Tokens.Jwt;
 using NLog;
 using NLog.Web;
 
-
-
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
 {
-
     var secret = Environment.GetEnvironmentVariable("Secret");
     var issuer = Environment.GetEnvironmentVariable("Issuer");
-    
+
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services
@@ -59,9 +56,7 @@ try
     app.MapControllers();
 
     app.Run();
-
 }
-
 catch (Exception ex)
 {
     logger.Error(ex, "Stopped program becouse of exception");
@@ -71,4 +66,3 @@ finally
 {
     NLog.LogManager.Shutdown();
 }
-

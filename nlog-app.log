@@ -1,0 +1,95 @@
+2023-05-24 22:12:22.3750 Info Message Template Auto Format enabled
+2023-05-24 22:12:22.3903 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-24 22:12:22.3949 Info Loading assembly: NLog.Loki
+2023-05-24 22:12:22.4560 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-24 22:12:22.4871 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-24 22:12:22.4871 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-24 22:12:22.5690 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-24 22:12:22.5976 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\FraOneDrive\Dokumenter\Erhvers Akademi Aarhus IT-Arkitektur 2021\4 Semester\IT-arkitektur & IT-infrastruktur\Opgaver\Auktionshus\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-24 22:14:14.7813 Info Shutdown() called. Logger closing...
+2023-05-24 22:14:14.7813 Info Closing old configuration.
+2023-05-24 22:14:14.7907 Info Logger has been closed down.
+2023-05-24 22:14:14.7907 Info AppDomain Shutting down. LogFactory closing...
+2023-05-24 22:14:14.7907 Info LogFactory has been closed.
+2023-05-25 10:48:32.4179 Info Message Template Auto Format enabled
+2023-05-25 10:48:32.4489 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:48:32.4499 Info Loading assembly: NLog.Loki
+2023-05-25 10:48:32.4813 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:48:32.4823 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:48:32.5429 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:48:32.5576 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:51:03.1573 Info Shutdown() called. Logger closing...
+2023-05-25 10:51:03.1586 Info Closing old configuration.
+2023-05-25 10:51:03.1741 Info Logger has been closed down.
+2023-05-25 10:51:03.1770 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:51:03.1781 Info LogFactory has been closed.
+2023-05-25 10:51:07.3179 Info Message Template Auto Format enabled
+2023-05-25 10:51:07.3458 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:51:07.3470 Info Loading assembly: NLog.Loki
+2023-05-25 10:51:07.3746 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:51:07.3755 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:51:07.4285 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:51:07.4438 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:54:54.5516 Info Shutdown() called. Logger closing...
+2023-05-25 10:54:54.5528 Info Closing old configuration.
+2023-05-25 10:54:54.5702 Info Logger has been closed down.
+2023-05-25 10:54:54.5739 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:54:54.5750 Info LogFactory has been closed.
+2023-05-25 10:55:05.6597 Info Message Template Auto Format enabled
+2023-05-25 10:55:05.6888 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:55:05.6903 Info Loading assembly: NLog.Loki
+2023-05-25 10:55:05.7165 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:55:05.7165 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:55:05.7681 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:55:05.7825 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:56:13.1741 Info Shutdown() called. Logger closing...
+2023-05-25 10:56:13.1763 Info Closing old configuration.
+2023-05-25 10:56:13.1881 Info Logger has been closed down.
+2023-05-25 10:56:13.1918 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:56:13.1930 Info LogFactory has been closed.
+2023-05-25 10:56:44.8716 Info Message Template Auto Format enabled
+2023-05-25 10:56:44.8988 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:56:44.8999 Info Loading assembly: NLog.Loki
+2023-05-25 10:56:44.9246 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:56:44.9254 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:56:44.9796 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:56:44.9941 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 11:39:41.2052 Info Message Template Auto Format enabled
+2023-05-25 11:39:41.2052 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 11:39:41.2220 Info Loading assembly: NLog.Loki
+2023-05-25 11:39:41.2971 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-25 11:39:41.3247 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 11:39:41.3271 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 11:39:41.3949 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 11:39:41.4143 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\Users\mathi\Skol\Skole\It-infrastruktur-og-arkitektur\auktion\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-25 11:40:52.2762 Info Shutdown() called. Logger closing...
+2023-05-25 11:40:52.2762 Info Closing old configuration.
+2023-05-25 11:40:52.2950 Info Logger has been closed down.
+2023-05-25 11:40:52.2950 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 11:40:52.2950 Info LogFactory has been closed.
+2023-05-25 11:40:56.7990 Info Message Template Auto Format enabled
+2023-05-25 11:40:56.8148 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 11:40:56.8148 Info Loading assembly: NLog.Loki
+2023-05-25 11:40:56.8148 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-25 11:40:56.8547 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 11:40:56.8547 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 11:40:56.9306 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 11:40:56.9551 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\Users\mathi\Skol\Skole\It-infrastruktur-og-arkitektur\auktion\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-25 11:42:20.5312 Info Shutdown() called. Logger closing...
+2023-05-25 11:42:20.5312 Info Closing old configuration.
+2023-05-25 11:42:20.5948 Info Logger has been closed down.
+2023-05-25 11:42:20.5948 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 11:42:20.5948 Info LogFactory has been closed.
+2023-05-25 11:42:27.3931 Info Message Template Auto Format enabled
+2023-05-25 11:42:27.4135 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 11:42:27.4135 Info Loading assembly: NLog.Loki
+2023-05-25 11:42:27.4231 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'add' from section 'NLog'
+2023-05-25 11:42:27.4644 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 11:42:27.4644 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 11:42:27.5474 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 11:42:27.5809 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=C:\Users\mathi\Skol\Skole\It-infrastruktur-og-arkitektur\auktion\AuthService\bin\Debug\net7.0\NLog.config
+2023-05-25 11:45:10.5389 Info Shutdown() called. Logger closing...
+2023-05-25 11:45:10.5389 Info Closing old configuration.
+2023-05-25 11:45:10.5760 Info Logger has been closed down.
+2023-05-25 11:45:10.5760 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 11:45:10.5760 Info LogFactory has been closed.
