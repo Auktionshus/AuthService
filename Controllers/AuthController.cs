@@ -39,11 +39,11 @@ namespace AuthService.Controllers
             _logger.LogInformation($"Connection: {_hostName}");
         }
 
-        private string GenerateJwtToken(string username)
+        private string GenerateJwtToken(string email)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[] { new Claim(ClaimTypes.NameIdentifier, username) };
+            var claims = new[] { new Claim(ClaimTypes.NameIdentifier, email) };
             var token = new JwtSecurityToken(
                 _issuer,
                 "http://localhost",
@@ -73,32 +73,8 @@ namespace AuthService.Controllers
             {
                 return BadRequest(new { message = "Password is incorrect" });
             }
-
-            var loginModel = new { Username = model.Email, Password = model.Password };
-            var content = new StringContent(
-                JsonConvert.SerializeObject(loginModel),
-                Encoding.UTF8,
-                "application/json"
-            );
-            var response = await _httpClient.PostAsync("http://localhost:8000/auth/login", content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var token = JsonConvert.DeserializeObject<dynamic>(responseContent).token;
-                return Ok(
-                    new
-                    {
-                        Id = user.Id,
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Token = token
-                    }
-                );
-            }
-
-            return BadRequest(new { message = "Could not generate token" });
+            var token = GenerateJwtToken(model.Email);
+            return Ok(new { token });
         }
 
         [AllowAnonymous]
