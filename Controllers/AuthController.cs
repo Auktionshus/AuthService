@@ -65,7 +65,7 @@ namespace AuthService.Controllers
                 .Find<User>(u => u.Email == model.Email)
                 .FirstOrDefaultAsync();
 
-            if (user == null)
+            if (user.Email != model.Email)
             {
                 return BadRequest(new { message = "Email is incorrect" });
             }
