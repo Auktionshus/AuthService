@@ -25,29 +25,22 @@ namespace AuthService.Controllers
         private readonly string _hostName;
         private readonly string _secret;
         private readonly string _issuer;
-        private readonly IMongoCollection<User> _users;
+        private readonly string _mongoDbConnectionString;
         private readonly HttpClient _httpClient;
 
         public AuthController(
             ILogger<AuthController> logger,
             IConfiguration config,
-            IMongoDatabase database,
             IHttpClientFactory clientFactory
         )
         {
+            _mongoDbConnectionString = config["MongoDbConnectionString"];
             _hostName = config["HostnameRabbit"];
             _secret = config["Secret"];
             _issuer = config["Issuer"];
 
             _logger = logger;
             _logger.LogInformation($"Connection: {_hostName}");
-
-            _httpClient = clientFactory.CreateClient();
-            var client = new MongoClient(
-                "mongodb+srv://GroenOlsen:BhvQmiihJWiurl2V@auktionshusgo.yzctdhc.mongodb.net/?retryWrites=true&w=majority"
-            );
-            database = client.GetDatabase("User");
-            _users = database.GetCollection<User>("Users");
         }
 
         private string GenerateJwtToken(string username)
@@ -69,14 +62,18 @@ namespace AuthService.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] RegisterModel model)
         {
-            var user = await _users.Find<User>(u => u.Email == model.Email).FirstOrDefaultAsync();
+            MongoClient dbClient = new MongoClient(_mongoDbConnectionString);
+            var collection = dbClient.GetDatabase("user").GetCollection<User>("users");
+
+            User user = await collection
+                .Find<User>(u => u.Email == model.Email)
+                .FirstOrDefaultAsync();
 
             if (user == null)
             {
                 return BadRequest(new { message = "Email or password is incorrect" });
             }
-
-            if (!VerifyPasswordHash(model.Password, user.PasswordHash, user.PasswordSalt))
+            else if (!VerifyPasswordHash(model.Password, user.PasswordHash, user.PasswordSalt))
             {
                 return BadRequest(new { message = "Email or password is incorrect" });
             }
