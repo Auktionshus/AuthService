@@ -82,7 +82,7 @@ namespace AuthService.Controllers
                 Encoding.UTF8,
                 "application/json"
             );
-            var response = await _httpClient.PostAsync("http://localhost:5082/auth/login", content);
+            var response = await _httpClient.PostAsync("http://localhost:8000/auth/login", content);
 
             if (response.IsSuccessStatusCode)
             {
