@@ -13,6 +13,7 @@ using MongoDB.Driver;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace AuthService.Controllers
 {
@@ -31,7 +32,7 @@ namespace AuthService.Controllers
             ILogger<AuthController> logger,
             IConfiguration config,
             IMongoDatabase database,
-            HttpClient httpClient
+            IHttpClientFactory clientFactory
         )
         {
             _hostName = config["HostnameRabbit"];
@@ -41,8 +42,12 @@ namespace AuthService.Controllers
             _logger = logger;
             _logger.LogInformation($"Connection: {_hostName}");
 
-            _users = database.GetCollection<User>("users");
-            _httpClient = httpClient;
+            _httpClient = clientFactory.CreateClient();
+            var client = new MongoClient(
+                "mongodb+srv://GroenOlsen:BhvQmiihJWiurl2V@auktionshusgo.yzctdhc.mongodb.net/?retryWrites=true&w=majority"
+            );
+            database = client.GetDatabase("User");
+            _users = database.GetCollection<User>("Users");
         }
 
         private string GenerateJwtToken(string username)
