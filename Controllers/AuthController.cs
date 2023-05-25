@@ -307,5 +307,12 @@ public class AuthController : ControllerBase
         }
         
     }
+
+    [Authorize]
+    [HttpGet]
+         public async Task<IActionResult> Get()
+            {
+                return Ok("You're authorized");
+            }
 }
 /*/
