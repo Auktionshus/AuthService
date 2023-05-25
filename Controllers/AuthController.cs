@@ -28,11 +28,7 @@ namespace AuthService.Controllers
         private readonly string _mongoDbConnectionString;
         private readonly HttpClient _httpClient;
 
-        public AuthController(
-            ILogger<AuthController> logger,
-            IConfiguration config,
-            IHttpClientFactory clientFactory
-        )
+        public AuthController(ILogger<AuthController> logger, IConfiguration config)
         {
             _mongoDbConnectionString = config["MongoDbConnectionString"];
             _hostName = config["HostnameRabbit"];
