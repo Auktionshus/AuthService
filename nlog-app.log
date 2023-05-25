@@ -1,0 +1,43 @@
+2023-05-25 10:48:32.4179 Info Message Template Auto Format enabled
+2023-05-25 10:48:32.4489 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:48:32.4499 Info Loading assembly: NLog.Loki
+2023-05-25 10:48:32.4813 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:48:32.4823 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:48:32.5429 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:48:32.5576 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:51:03.1573 Info Shutdown() called. Logger closing...
+2023-05-25 10:51:03.1586 Info Closing old configuration.
+2023-05-25 10:51:03.1741 Info Logger has been closed down.
+2023-05-25 10:51:03.1770 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:51:03.1781 Info LogFactory has been closed.
+2023-05-25 10:51:07.3179 Info Message Template Auto Format enabled
+2023-05-25 10:51:07.3458 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:51:07.3470 Info Loading assembly: NLog.Loki
+2023-05-25 10:51:07.3746 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:51:07.3755 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:51:07.4285 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:51:07.4438 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:54:54.5516 Info Shutdown() called. Logger closing...
+2023-05-25 10:54:54.5528 Info Closing old configuration.
+2023-05-25 10:54:54.5702 Info Logger has been closed down.
+2023-05-25 10:54:54.5739 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:54:54.5750 Info LogFactory has been closed.
+2023-05-25 10:55:05.6597 Info Message Template Auto Format enabled
+2023-05-25 10:55:05.6888 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:55:05.6903 Info Loading assembly: NLog.Loki
+2023-05-25 10:55:05.7165 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:55:05.7165 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:55:05.7681 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:55:05.7825 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
+2023-05-25 10:56:13.1741 Info Shutdown() called. Logger closing...
+2023-05-25 10:56:13.1763 Info Closing old configuration.
+2023-05-25 10:56:13.1881 Info Logger has been closed down.
+2023-05-25 10:56:13.1918 Info AppDomain Shutting down. LogFactory closing...
+2023-05-25 10:56:13.1930 Info LogFactory has been closed.
+2023-05-25 10:56:44.8716 Info Message Template Auto Format enabled
+2023-05-25 10:56:44.8988 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-25 10:56:44.8999 Info Loading assembly: NLog.Loki
+2023-05-25 10:56:44.9246 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-25 10:56:44.9254 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2023-05-25 10:56:44.9796 Info Registered target NLog.Loki.LokiTarget(Name=loki)
+2023-05-25 10:56:44.9941 Info Validating config: TargetNames=logconsole, logfile, loki, ConfigItems=47, FilePath=/Users/nicklasfrolundabrahamsen/Desktop/AuktionshusGO/AuthService/bin/Debug/net7.0/NLog.config
