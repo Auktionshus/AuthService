@@ -148,5 +148,12 @@ namespace AuthService.Controllers
 
             return true;
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok("You're authorized");
+        }
     }
 }
