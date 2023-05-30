@@ -14,7 +14,7 @@ logger.Debug("init main");
 
 try
 {
-    var EndPoint = "https://localhost:8201/";
+    var EndPoint = "https://vault_dev:8201/";
     logger.Info($"EndPoint: {EndPoint}");
     var httpClientHandler = new HttpClientHandler();
     logger.Info("Before ServerCertificateCustomValidationCallback");
