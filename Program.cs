@@ -15,6 +15,7 @@ logger.Debug("init main");
 try
 {
     var EndPoint = "https://localhost:8201/";
+    logger.Info($"EndPoint: {EndPoint}");
     var httpClientHandler = new HttpClientHandler();
     httpClientHandler.ServerCertificateCustomValidationCallback = (
         message,
