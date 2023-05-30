@@ -1,15 +1,50 @@
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using NLog;
 using NLog.Web;
+using VaultSharp;
+using VaultSharp.V1.AuthMethods.Token;
+using VaultSharp.V1.AuthMethods;
+using VaultSharp.V1.Commons;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
 {
+    var EndPoint = "https://localhost:8201/";
+    var httpClientHandler = new HttpClientHandler();
+    httpClientHandler.ServerCertificateCustomValidationCallback = (
+        message,
+        cert,
+        chain,
+        sslPolicyErrors
+    ) =>
+    {
+        return true;
+    };
+
+    // Initialize one of the several auth methods.
+    IAuthMethodInfo authMethod = new TokenAuthMethodInfo("00000000-0000-0000-0000-000000000000");
+    // Initialize settings. You can also set proxies, custom delegates etc. here.
+    var vaultClientSettings = new VaultClientSettings(EndPoint, authMethod)
+    {
+        Namespace = "",
+        MyHttpClientProviderFunc = handler =>
+            new HttpClient(httpClientHandler) { BaseAddress = new Uri(EndPoint) }
+    };
+    IVaultClient vaultClient = new VaultClient(vaultClientSettings);
+
+    // Use client to read a key-value secret.
+    Secret<SecretData> kv2Secret = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
+        path: "hemmeligheder",
+        mountPoint: "secret"
+    );
+    var minkode = kv2Secret.Data.Data["MinKode"];
+    logger.Info($"MinKode: {minkode}");
+
     var secret = Environment.GetEnvironmentVariable("Secret");
     var issuer = Environment.GetEnvironmentVariable("Issuer");
 
@@ -22,11 +57,10 @@ try
             options.TokenValidationParameters = new TokenValidationParameters()
             {
                 ValidateIssuer = true,
-                ValidateAudience = true,
+                ValidateAudience = false,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = issuer,
-                ValidAudience = "http://localhost",
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
             };
         });
@@ -38,6 +72,10 @@ try
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    // Configure NLog for Dependency injection
+    builder.Logging.ClearProviders();
+    builder.Host.UseNLog();
 
     var app = builder.Build();
 
