@@ -39,7 +39,6 @@ try
     // Initialize settings. You can also set proxies, custom delegates etc. here.
     var vaultClientSettings = new VaultClientSettings(EndPoint, authMethod)
     {
-        logger.Info($"VaultClientSettings: {endPoint}, {authMethod}"),
         Namespace = "",
         MyHttpClientProviderFunc = handler =>
             new HttpClient(httpClientHandler) { BaseAddress = new Uri(EndPoint) }
