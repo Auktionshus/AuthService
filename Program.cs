@@ -26,10 +26,6 @@ try
     ) =>
     {
         logger.Info("Inside ServerCertificateCustomValidationCallback");
-        logger.Info($"message: {message}");
-        logger.Info($"cert: {cert}");
-        logger.Info($"chain: {chain}");
-        logger.Info($"sslPolicyErrors: {sslPolicyErrors}");
         return true;
     };
     logger.Info("After ServerCertificateCustomValidationCallback");
@@ -44,7 +40,7 @@ try
             new HttpClient(httpClientHandler) { BaseAddress = new Uri(EndPoint) }
     };
     IVaultClient vaultClient = new VaultClient(vaultClientSettings);
-
+    logger.Info($"vault client created: {vaultClient}");
     // Use client to read a key-value secret.
     Secret<SecretData> kv2Secret = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
         path: "hemmeligheder",
