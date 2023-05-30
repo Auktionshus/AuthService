@@ -15,7 +15,9 @@ logger.Debug("init main");
 try
 {
     var EndPoint = "https://localhost:8201/";
+    logger.Info($"EndPoint: {EndPoint}");
     var httpClientHandler = new HttpClientHandler();
+    logger.Info("Before ServerCertificateCustomValidationCallback");
     httpClientHandler.ServerCertificateCustomValidationCallback = (
         message,
         cert,
@@ -23,8 +25,14 @@ try
         sslPolicyErrors
     ) =>
     {
+        logger.Info("Inside ServerCertificateCustomValidationCallback");
+        logger.Info($"message: {message}");
+        logger.Info($"cert: {cert}");
+        logger.Info($"chain: {chain}");
+        logger.Info($"sslPolicyErrors: {sslPolicyErrors}");
         return true;
     };
+    logger.Info("After ServerCertificateCustomValidationCallback");
 
     // Initialize one of the several auth methods.
     IAuthMethodInfo authMethod = new TokenAuthMethodInfo("00000000-0000-0000-0000-000000000000");
@@ -97,7 +105,7 @@ try
 }
 catch (Exception ex)
 {
-    logger.Error(ex, "Stopped program becouse of exception");
+    logger.Error(ex, "Stopped program because of exception");
     throw;
 }
 finally
