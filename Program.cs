@@ -24,6 +24,10 @@ try
         sslPolicyErrors
     ) =>
     {
+        logger.Info($"message: {message}");
+        logger.Info($"cert: {cert}");
+        logger.Info($"chain: {chain}");
+        logger.Info($"sslPolicyErrors: {sslPolicyErrors}");
         return true;
     };
 
