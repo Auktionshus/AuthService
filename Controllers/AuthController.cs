@@ -17,28 +17,19 @@ namespace AuthService.Controllers
     public class AuthController : ControllerBase
     {
         private readonly ILogger<AuthController> _logger;
-        private readonly string _hostName;
         private readonly string _secret;
         private readonly string _issuer;
         private readonly string _mongoDbConnectionString;
 
-        public AuthController(
-            ILogger<AuthController> logger,
-            IConfiguration config,
-            Environment secrets
-        )
+        public AuthController(ILogger<AuthController> logger, Environment secrets)
         {
             try
             {
-                // Hostname for RabbitMQ, gets value from docker-compose.yml
-                _hostName = config["HostnameRabbit"];
-
                 _secret = secrets.dictionary["Secret"];
                 _issuer = secrets.dictionary["Issuer"];
                 _mongoDbConnectionString = secrets.dictionary["ConnectionString"];
 
                 _logger = logger;
-                _logger.LogInformation($"Connection: {_hostName}");
                 _logger.LogInformation($"Secret: {_secret}");
                 _logger.LogInformation($"Issuer: {_issuer}");
                 _logger.LogInformation($"MongoDbConnectionString: {_mongoDbConnectionString}");
