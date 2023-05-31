@@ -17,7 +17,6 @@ try
     var EndPoint = "https://vault_dev:8201/";
     logger.Info($"EndPoint: {EndPoint}");
     var httpClientHandler = new HttpClientHandler();
-    logger.Info("Before ServerCertificateCustomValidationCallback");
     httpClientHandler.ServerCertificateCustomValidationCallback = (
         message,
         cert,
@@ -25,10 +24,8 @@ try
         sslPolicyErrors
     ) =>
     {
-        logger.Info("Inside ServerCertificateCustomValidationCallback");
         return true;
     };
-    logger.Info("After ServerCertificateCustomValidationCallback");
 
     // Initialize one of the several auth methods.
     IAuthMethodInfo authMethod = new TokenAuthMethodInfo("00000000-0000-0000-0000-000000000000");
