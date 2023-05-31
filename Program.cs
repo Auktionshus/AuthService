@@ -43,13 +43,31 @@ try
         path: "JWT",
         mountPoint: "secret"
     );
+    Secret<SecretData> MongoSecrets = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
+        path: "mongoSecrets",
+        mountPoint: "secret"
+    );
 
     string? secret = JWTSecrets.Data.Data["Secret"].ToString();
     string? issuer = JWTSecrets.Data.Data["Issuer"].ToString();
+    string? connectionString = MongoSecrets.Data.Data["ConnectionString"].ToString();
     logger.Info($"Secret: {secret}");
     logger.Info($"Issuer: {issuer}");
+    logger.Info($"Connection String: {connectionString}");
+
+    Environment secrets = new Environment
+    {
+        dictionary = new Dictionary<string, string>
+        {
+            { "Secret", secret },
+            { "Issuer", issuer },
+            { "ConnectionString", connectionString }
+        }
+    };
 
     var builder = WebApplication.CreateBuilder(args);
+
+    builder.Services.AddSingleton<Environment>(secrets);
 
     builder.Services
         .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

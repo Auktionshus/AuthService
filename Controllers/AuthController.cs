@@ -22,59 +22,31 @@ namespace AuthService.Controllers
         private readonly string _issuer;
         private readonly string _mongoDbConnectionString;
 
-        public AuthController(ILogger<AuthController> logger, IConfiguration config)
+        public AuthController(
+            ILogger<AuthController> logger,
+            IConfiguration config,
+            Environment secrets
+        )
         {
-            _hostName = config["HostnameRabbit"];
-
-            _logger = logger;
-            _logger.LogInformation($"Connection: {_hostName}");
-
-            var EndPoint = "https://vault_dev:8201/";
-            _logger.LogInformation($"EndPoint: {EndPoint}");
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback = (
-                message,
-                cert,
-                chain,
-                sslPolicyErrors
-            ) =>
+            try
             {
-                return true;
-            };
+                // Hostname for RabbitMQ, gets value from docker-compose.yml
+                _hostName = config["HostnameRabbit"];
 
-            // Initialize one of the several auth methods.
-            IAuthMethodInfo authMethod = new TokenAuthMethodInfo(
-                "00000000-0000-0000-0000-000000000000"
-            );
-            // Initialize settings. You can also set proxies, custom delegates etc. here.
-            var vaultClientSettings = new VaultClientSettings(EndPoint, authMethod)
+                _secret = secrets.dictionary["Secret"];
+                _issuer = secrets.dictionary["Issuer"];
+                _mongoDbConnectionString = secrets.dictionary["ConnectionString"];
+
+                _logger = logger;
+                _logger.LogInformation($"Connection: {_hostName}");
+                _logger.LogInformation($"Secret: {_secret}");
+                _logger.LogInformation($"Issuer: {_issuer}");
+                _logger.LogInformation($"MongoDbConnectionString: {_mongoDbConnectionString}");
+            }
+            catch (Exception e)
             {
-                Namespace = "",
-                MyHttpClientProviderFunc = handler =>
-                    new HttpClient(httpClientHandler) { BaseAddress = new Uri(EndPoint) }
-            };
-            IVaultClient vaultClient = new VaultClient(vaultClientSettings);
-            _logger.LogInformation($"vault client created: {vaultClient}");
-            // Use client to read a key-value secret.
-            Secret<SecretData> JWTSecrets =
-                await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
-                    path: "JWT",
-                    mountPoint: "secret"
-                );
-
-            Secret<SecretData> MongoSecrets =
-                await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
-                    path: "mongoSecrets",
-                    mountPoint: "secret"
-                );
-
-            string? _secret = JWTSecrets.Data.Data["Secret"].ToString();
-            string? _issuer = JWTSecrets.Data.Data["Issuer"].ToString();
-            string? _mongoDbConnectionString = MongoSecrets.Data.Data[
-                "ConnectionString"
-            ].ToString();
-
-            _logger.LogInformation($"MongoDbConnectionString: {mongoDbConnectionString}");
+                _logger.LogError($"Error getting environment variables{e.Message}");
+            }
         }
 
         private string GenerateJwtToken(string email)
