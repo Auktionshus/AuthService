@@ -22,15 +22,31 @@ namespace AuthService.Controllers
         private readonly string _issuer;
         private readonly string _mongoDbConnectionString;
 
-        public AuthController(ILogger<AuthController> logger, IConfiguration config)
+        public AuthController(
+            ILogger<AuthController> logger,
+            IConfiguration config,
+            Environment secrets
+        )
         {
-            _mongoDbConnectionString = config["MongoDbConnectionString"];
-            _hostName = config["HostnameRabbit"];
-            _secret = config["Secret"];
-            _issuer = config["Issuer"];
+            try
+            {
+                // Hostname for RabbitMQ, gets value from docker-compose.yml
+                _hostName = config["HostnameRabbit"];
 
-            _logger = logger;
-            _logger.LogInformation($"Connection: {_hostName}");
+                _secret = secrets.dictionary["Secret"];
+                _issuer = secrets.dictionary["Issuer"];
+                _mongoDbConnectionString = secrets.dictionary["ConnectionString"];
+
+                _logger = logger;
+                _logger.LogInformation($"Connection: {_hostName}");
+                _logger.LogInformation($"Secret: {_secret}");
+                _logger.LogInformation($"Issuer: {_issuer}");
+                _logger.LogInformation($"MongoDbConnectionString: {_mongoDbConnectionString}");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error getting environment variables{e.Message}");
+            }
         }
 
         private string GenerateJwtToken(string email)
@@ -162,7 +178,6 @@ namespace AuthService.Controllers
                 properties.Add($"{attribute.AttributeType.Name} - {attribute.ToString()}");
             }
             return properties;
-
         }
     }
 }
