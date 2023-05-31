@@ -43,14 +43,13 @@ try
     logger.Info($"vault client created: {vaultClient}");
     // Use client to read a key-value secret.
     Secret<SecretData> kv2Secret = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
-        path: "hemmeligheder",
+        path: "JWT",
         mountPoint: "secret"
     );
-    var minkode = kv2Secret.Data.Data["MinKode"];
-    logger.Info($"MinKode: {minkode}");
-
-    var secret = Environment.GetEnvironmentVariable("Secret");
-    var issuer = Environment.GetEnvironmentVariable("Issuer");
+    var secret = kv2Secret.Data.Data["Secret"];
+    var issuer = kv2Secret.Data.Data["Issuer"];
+    logger.Info($"Secret: {secret}");
+    logger.Info($"Issuer: {issuer}");
 
     var builder = WebApplication.CreateBuilder(args);
 
