@@ -42,12 +42,13 @@ try
     IVaultClient vaultClient = new VaultClient(vaultClientSettings);
     logger.Info($"vault client created: {vaultClient}");
     // Use client to read a key-value secret.
-    Secret<SecretData> kv2Secret = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
+    Secret<SecretData> JWTSecrets = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
         path: "JWT",
         mountPoint: "secret"
     );
-    var secret = kv2Secret.Data.Data["Secret"];
-    var issuer = kv2Secret.Data.Data["Issuer"];
+
+    string? secret = JWTSecrets.Data.Data["Secret"].ToString();
+    string? issuer = JWTSecrets.Data.Data["Issuer"].ToString();
     logger.Info($"Secret: {secret}");
     logger.Info($"Issuer: {issuer}");
 
