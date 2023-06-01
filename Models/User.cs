@@ -10,6 +10,4 @@ public class User
     public String Email { get; set; }
     public byte[] PasswordHash { get; set; }
     public byte[] PasswordSalt { get; set; }
-    public Int32 MobilNummer { get; set; }
-    public string Location { get; set; }
 }
