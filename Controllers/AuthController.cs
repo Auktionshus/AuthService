@@ -57,7 +57,7 @@ namespace AuthService.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] RegisterModel model)
+        public async Task<IActionResult> Login([FromBody] Register model)
         {
             MongoClient dbClient = new MongoClient(_mongoDbConnectionString);
             var collection = dbClient.GetDatabase("User").GetCollection<User>("Users");
