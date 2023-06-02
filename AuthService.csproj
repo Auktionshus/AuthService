@@ -4,6 +4,20 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+      <Company>Grøn og Olsen ApS</Company>
+    <Authors>3M1N</Authors>
+    <Copyright>2023 Eaaa 3M1N ApS</Copyright>
+
+    <AssemblyVersion>1.0.1.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+    <Description>
+      1.0.0 Added metod comments
+      0.4.0 Updated with VaultSharp
+      0.3.0 Updated with semantic versioning
+      0.2.0 Updated with NLog
+      0.1.0 Dockerfile Added to App
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
