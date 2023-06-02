@@ -40,6 +40,11 @@ namespace AuthService.Controllers
             }
         }
 
+        /// <summary>
+        /// Generates a JWT token
+        /// </summary>
+        /// <param name="email">Email of the user</param>
+        /// <returns>The JWT token</returns>
         private string GenerateJwtToken(string email)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
@@ -55,6 +60,11 @@ namespace AuthService.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        /// <summary>
+        /// Login for the user
+        /// </summary>
+        /// <param name="model">Register model</param>
+        /// <returns>The JWT token</returns>
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Register model)
@@ -78,6 +88,11 @@ namespace AuthService.Controllers
             return Ok(new { token });
         }
 
+        /// <summary>
+        /// Validates a JWT token
+        /// </summary>
+        /// <param name="token">The JWT token</param>
+        /// <returns>The account id</returns>
         [AllowAnonymous]
         [HttpPost("validate")]
         public async Task<IActionResult> ValidateJwtToken([FromBody] string token)
@@ -118,6 +133,13 @@ namespace AuthService.Controllers
             }
         }
 
+        /// <summary>
+        /// Verifies the password hash
+        /// </summary>
+        /// <param name="password">The password</param>
+        /// <param name="storedHash">The stored hash</param>
+        /// <param name="storedSalt">The stored salt</param>
+        /// <returns>True if the password is correct</returns>
         private bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
             if (password == null)
@@ -151,13 +173,10 @@ namespace AuthService.Controllers
             return true;
         }
 
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetAuth()
-        {
-            return Ok("You're authorized");
-        }
-
+        /// <summary>
+        /// Gets the version information of the service
+        /// </summary>
+        /// <returns>A list of version information</returns>
         [HttpGet("version")]
         public IEnumerable<string> Get()
         {
